@@ -1,0 +1,82 @@
+<!-- Run python local host first before testing -->
+<!--
+  cd  Documents/html_and_js/httpsServer
+  python3 -m http.server
+-->
+<html>
+  <title>Twitch Test Tab</title>
+  <body style="background-color:#271e27">
+
+    <input style="background-color:#362e37", "color:#000000" type="search" id="twitchName" placeholder="Enter twitch name">
+    <button type="button" onclick="addEmbed(document.getElementById('twitchName').value)">watch</button>
+    <p id="test_input"></p>
+
+    <!-- Add a placeholder for the Twitch embed -->
+    <!-- <div id="twitch-embed"></div> -->
+    <div id="twitch-container"></div>
+
+    <!-- Load the Twitch embed script -->
+    <!-- Create a Twitch.Embed object that will render within the "twitch-embed" element. -->
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+
+    <!-- TODO remove iframe auto based on status? getEnded() in embed? -->
+    <!-- TODO add after inputting name into a box and hit "enter" -->
+    <!-- TODO remove twitch interface, similar to simultwitch, might be similar to remove iframe TODO above -->
+    <!-- TODO avoid dupe streams TODO this is important, dupes are creating endless containers with same name, button doesn't remove it all -->
+    <!-- TODO save previously listed streams -->
+    <!-- TODO change txt color in search box -->
+
+    <script type="text/javascript">
+      console.log("script initi");
+
+      function addEmbed(channelName){
+        console.log("starting function for " + channelName);
+        var channelnameButtonID = channelName + "button"
+        var channelnameStreamDivID = channelName + 'ID'
+
+        console.log("creating button");
+        var butt = document.createElement('BUTTON');
+        butt.id=channelnameButtonID;
+
+        console.log("creating div");
+        var newTwitchEmbed = document.createElement('div');
+        newTwitchEmbed.id = channelnameStreamDivID;
+
+        console.log("embedding new div into container")
+        document.getElementById("twitch-container").appendChild(newTwitchEmbed);
+
+        console.log("creating embed");
+        var embed = new Twitch.Embed(channelnameStreamDivID, {
+          width: 284,
+          height: 160,
+          channel: channelName,
+          layout: "video",
+          parent: ["embed.example.com", "othersite.example.com"]
+        });
+
+        console.log('testing channel name button id')
+        console.log(channelnameButtonID);
+
+        console.log("creating button listener");
+        butt.addEventListener('click',() => {
+          console.log('click');
+          document.getElementById(channelnameStreamDivID).remove();
+          document.getElementById(channelnameButtonID).remove();
+        })
+        // document.getElementById("channelnameStreamDivID").appendChild();
+        // action already performed via new twitch embed?
+        console.log("appending button");
+        document.getElementById(channelnameStreamDivID).appendChild(butt);
+        console.log("button appended");
+
+        console.log("creating embed listener");
+        embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
+          var player = embed.getPlayer();
+          player.setQuality("160p");
+          player.setVolume("0.01");
+          player.play();
+        });
+      }
+    </script>
+  </body>
+</html>
