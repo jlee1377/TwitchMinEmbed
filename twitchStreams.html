@@ -1,50 +1,58 @@
 <!-- Run python local host first before testing -->
 <!--
-  cd  Documents/html_and_js/httpsServer
+  cd  Documents/html_and_js/httpsServer/TwitchMinEmbed
   python3 -m http.server
 -->
 <html>
   <title>Twitch Test Tab</title>
   <body style="background-color:#271e27">
 
-    <input style="background-color:#362e37", "color:#000000" type="search" id="twitchName" placeholder="Enter twitch name">
+    <!-- should allow "enter" in the streams to embed -->
+    <!-- <form class="" action="addEmbed(document.getElementById('twitchName').value)" method="post"> -->
+      <input style="background-color:#362e37", "color:#000000" type="search" id="twitchName" placeholder="Enter twitch name">
+    <!-- </form> -->
     <button type="button" onclick="addEmbed(document.getElementById('twitchName').value)">watch</button>
     <p id="test_input"></p>
 
     <!-- Add a placeholder for the Twitch embed -->
-    <!-- <div id="twitch-embed"></div> -->
+    <!-- This is containerLvl1 -->
     <div id="twitch-container"></div>
 
     <!-- Load the Twitch embed script -->
-    <!-- Create a Twitch.Embed object that will render within the "twitch-embed" element. -->
     <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
-    <!-- TODO remove iframe auto based on status? getEnded() in embed? -->
     <!-- TODO add after inputting name into a box and hit "enter" -->
-    <!-- TODO save previously listed streams -->
-    <!-- TODO change txt color in search box -->
-    <!-- TODO remove twitch interface, similar to simultwitch, might be similar to remove iframe TODO above -->
     <!-- TODO avoid dupe streams TODO this is important, dupes are creating endless containers with same name, button doesn't remove it all -->
+    <!-- TODO change txt color in search box -->
+    <!-- TODO save previously listed streams -->
+    <!-- TODO remove twitch interface, similar to simultwitch, might be similar to remove iframe TODO above -->
+    <!-- TODO remove iframe auto based on status? getEnded() in embed? -->
 
     <script type="text/javascript">
       console.log("script initi");
 
+      // Adding embed of stream
       function addEmbed(channelName){
+        // Setting variables for name ID to hold container and button name
         console.log("starting function for " + channelName);
         var channelnameButtonID = channelName + "button"
         var channelnameStreamDivID = channelName + 'ID'
 
+        // Creating button element
         console.log("creating button");
         var butt = document.createElement('BUTTON');
         butt.id=channelnameButtonID;
 
+        // Creating containerLvl2 and set naming ID
         console.log("creating div");
         var newTwitchEmbed = document.createElement('div');
         newTwitchEmbed.id = channelnameStreamDivID;
 
+        // Creating and setting embed containerLvl2 into containerLvl1
         console.log("embedding new div into container")
         document.getElementById("twitch-container").appendChild(newTwitchEmbed);
 
+        // Creating embed
         console.log("creating embed");
         var embed = new Twitch.Embed(channelnameStreamDivID, {
           width: 284,
@@ -57,18 +65,20 @@
         console.log('testing channel name button id')
         console.log(channelnameButtonID);
 
+        // Adding button listener event
         console.log("creating button listener");
         butt.addEventListener('click',() => {
           console.log('click');
           document.getElementById(channelnameStreamDivID).remove();
           document.getElementById(channelnameButtonID).remove();
         })
-        // document.getElementById("channelnameStreamDivID").appendChild();
-        // action already performed via new twitch embed?
+
+        // Appending button into ContainerLvl2
         console.log("appending button");
         document.getElementById(channelnameStreamDivID).appendChild(butt);
         console.log("button appended");
 
+        // Setting embed settings
         console.log("creating embed listener");
         embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
           var player = embed.getPlayer();
