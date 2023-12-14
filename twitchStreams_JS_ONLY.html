@@ -8,9 +8,16 @@
   <body style="background-color:#271e27">
 
     <!-- Submit box -->
-    <input style="background-color:#362e37;text-color:#000000 type="search" id="twitchName" placeholder="Enter twitch name" value=''>
+    <input
+      style="background-color:#362e37;
+            color:#000000"
+      type="search"
+      id="twitchName"
+      placeholder="Enter twitch name"
+      value=''>
     <!-- button to submit stream name -->
-    <button type="button" id="submitButton" onclick="addEmbed(document.getElementById('twitchName').value)">watch</button>
+    <button type="button"
+      id="submitButton" onclick="addEmbed(document.getElementById('twitchName').value)">watch</button>
     <p id="test_input"></p>
 
     <!-- Add a placeholder for the Twitch embed -->
@@ -20,11 +27,13 @@
     <!-- Load the Twitch embed script -->
     <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
-<!-- TODO change txt color in search box -->
-<!-- TODO clear input box (look for TODO)-->
 <!-- TODO save previously listed streams -->
-<!-- TODO remove twitch interface, similar to simultwitch, might be similar to remove iframe TODO above -->
 <!-- TODO remove iframe auto based on status? getEnded() in embed? -->
+  <!-- Either in link or internally, link seems more feasible -->
+<!-- X change txt color in search box -->
+  <!-- Unable to figure out why text does not change colors, even with   -->
+<!-- X clear input box (look for TODO)-->
+  <!-- Unable to clear for some reason -->
 
     <script type="text/javascript">
       console.log("script initi");
