@@ -2,7 +2,9 @@ MultiTwitch Minimal
 
 This is a personal project to create an HTML file with JS code to generate multiple streams with minimal size, memory, and quality.
 
-TwitchStreams.html is the working version. TwitchStreamsTest.html is the testing versions, any code testing/changes done are done here first before copied over into twitchStreams.html.
+twitchStreams_JS_ONLY.html is the JS only version.
+
+twitchStreams_REACT_Ver.html will be the next iteration of this project while utilizing REACT.js.
 
 --------------------------
 
