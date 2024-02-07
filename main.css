@@ -1,6 +1,31 @@
 /* twitch-container {
   display:block;
 } */
+.top-container {
+  background-color: #f1f1f1;
+  padding: 30px;
+  text-align: center;
+}
+
+header {
+  padding: 10px 16px;
+  background: #000000;
+  color: #000000;
+}
+
+.content {
+  padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 102px;
+}
 
 body {
   background-color:#271e27
