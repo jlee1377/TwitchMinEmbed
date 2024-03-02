@@ -1,31 +1,7 @@
 /* twitch-container {
   display:block;
 } */
-.top-container {
-  background-color: #f1f1f1;
-  padding: 30px;
-  text-align: center;
-}
 
-header {
-  padding: 10px 16px;
-  background: #000000;
-  color: #000000;
-}
-
-.content {
-  padding: 16px;
-}
-
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-
-.sticky + .content {
-  padding-top: 102px;
-}
 
 body {
   background-color:#271e27
@@ -35,7 +11,33 @@ article {
   display: inline-block;
 }
 
-/* twitchNameSearch { this does not work
+/* .top-container {
+  background-color: #000000;
+  padding: 20px;
+  text-align: center;
+} */
+
+.header {
+  padding: 5px 10px;
+  background: #272727;
+  color: #000000;
+}
+
+.content {
+  padding: 40px;
+}
+
+.sticky {
+  position: fixed;
+  top: 8;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 40px;
+}
+
+/* .twitchNameSearch { this does not work
   background-color:#362e37;
   color:#362e37;
 } */
