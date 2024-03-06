@@ -10,7 +10,7 @@
 
 <!-- Run python local host first before testing -->
 <!--
-  cd  Documents/html_and_js/httpsServer/TwitchMinEmbed
+  cd ~Documents/GitHub/TwitchMinEmbed  
   python3 -m http.server
 -->
 
@@ -29,6 +29,12 @@
         type="search"
         id="twitchNameSearch"
         placeholder="Enter twitch name">
+      <select class="form-control"
+        id='twitchNameSELECT'
+        name='twitchNameSELECT'
+        onclick="getTwitchId()"></<select>
+
+      </select>
       <!-- button to submit stream name -->
       <button type="button"
         id="submitButton" onclick="addEmbed(document.getElementById('twitchNameSearch').value)">watch
