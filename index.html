@@ -1,4 +1,5 @@
 <!-- IP Autodrop twitch names? -->
+<!-- TODO put X on overlay itself (top right of video?) -->
 <!-- TODO remove iframe auto based on status? getEnded() in embed? -->
   <!-- Either in link or internally, link seems more feasible -->
 <!-- TODO add donation -->
@@ -10,7 +11,7 @@
 
 <!-- Run python local host first before testing -->
 <!--
-  cd ~Documents/GitHub/TwitchMinEmbed  
+  cd ~Documents/GitHub/TwitchMinEmbed
   python3 -m http.server
 -->
 
@@ -29,12 +30,14 @@
         type="search"
         id="twitchNameSearch"
         placeholder="Enter twitch name">
-      <select class="form-control"
-        id='twitchNameSELECT'
-        name='twitchNameSELECT'
-        onclick="getTwitchId()"></<select>
 
+        <!-- IP input username(s) to find user/stream -->
+      <select class="form-control"
+        id='twitchNameFindElement'
+        name='twitchNameFindElement'
+        onclick="getTwitchId()"></<select>
       </select>
+
       <!-- button to submit stream name -->
       <button type="button"
         id="submitButton" onclick="addEmbed(document.getElementById('twitchNameSearch').value)">watch
@@ -57,6 +60,9 @@
 
     <script type="text/javascript">
       console.log("script initi");
+
+      // IP add function to auto populate list with user input
+      // document.getElementById('').
 
       // Add addEventListener to textbox to allow it to be "Enter"able
       document.getElementById('twitchNameSearch').addEventListener(
