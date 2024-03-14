@@ -1,3 +1,6 @@
+(DEPRECATED) Moving this to my other repository for pages deployment.
+https://github.com/jlee1377/jlee1377.github.io
+
 MultiTwitch Minimal
 
 This is a personal project to create an HTML file with JS code to generate multiple streams with minimal size, memory, and quality.
